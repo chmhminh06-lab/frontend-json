@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HShop Clone - Cửa hàng linh kiện điện tử</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Header -->
+<header class="site-header">
+  <div class="header-top">
+    <!-- Logo -->
+    <div class="logo">
+      <img src="img/a.png" alt="Logo Hoàng Minh">
+      <div class="brand-text">
+        <h1>Hoàng Minh</h1>
+        <p>-- iPhone - iPad - iWatch --</p>
+      </div>
+    </div>
+
+    <!-- Danh mục -->
+    <div class="category-bar">
+      <div class="category-btn">
+        <i class="fas fa-bars icon"></i>📂 Danh mục
+      </div>
+      <ul class="dropdown">
+        <li><a href="#"><i class="fas fa-mobile-alt"></i>📱 iPhone</a></li>
+        <li><a href="#"><i class="fas fa-tablet-alt"></i>💻 MacBook</a></li>
+        <li><a href="#"><i class="fas fa-clock"></i>⌚ Apple Watch</a></li>
+      </ul>
+    </div>
+
+    <!-- Tìm kiếm -->
+    <div class="search-bar">
+      <input type="text" placeholder="Tìm kiếm sản phẩm...">
+      <button>Tìm kiếm</button>
+      <div class="header-icons">
+        <a href="#">🧡 Yêu thích</a>
+        <a href="#" id="cart-link">🛒 Giỏ hàng <span id="cart-count" class="cart-badge">0</span></a>
+        <a href="#">👤 Tài khoản</a>
+      </div>
+    </div>
+
+    <!-- Icons -->
+    <div class="header-icons">
+      <a href="#"><i class="fas fa-user"></i></a>
+      <a href="#"><i class="fas fa-shopping-cart"></i></a>
+    </div>
+  </div>
+
+  <!-- Menu dưới -->
+  <nav class="main-nav">
+    <a href="#" class="active">Trang chủ</a>
+    <a href="#">Sản phẩm</a>
+    <a href="#">Khuyến mãi</a>
+    <a href="#">Liên hệ</a>
+    <a href="admin.html">Admin</a>
+  </nav>
+</header>
+
+    <!-- Nội dung trung tâm -->
+    <section class="content-area">
+      
+    <div class="slideshow-container">
+
+     <!-- Các slide -->
+     <!-- HTML -->
+<div class="hero-slider">
+  <div class="hero-slide fade">
+    <img src="img/banner1.png" alt="Banner 1">
+  </div>
+  <div class="hero-slide fade">
+    <img src="img/banner2.png" alt="Banner 2">
+  </div>
+  <div class="hero-slide fade">
+    <img src="img/banner3.png" alt="Banner 2">
+  </div>
+  <div class="hero-slide fade">
+    <img src="img/banner4.png" alt="Banner 2">
+  </div>
+  <div class="hero-slide fade">
+    <img src="img/banner5.png" alt="Banner 2">
+  </div>
+  <div class="hero-slide fade">
+    <img src="img/banner6.png" alt="Banner 2">
+  </div>
+  <div class="hero-slide fade">
+    <img src="img/banner7.png" alt="Banner 2">
+  </div>
+  <div class="hero-slide fade">
+    <img src="img/banner8.png" alt="Banner 2">
+  </div>
+  <div class="hero-slide fade">
+    <img src="img/banner9.png" alt="Banner 2">
+  </div>
+  <!-- thêm slide nếu cần -->
+  <button class="slider-prev">&#10094;</button>
+  <button class="slider-next">&#10095;</button>
+  <div class="slider-dots"></div>
+</div>
+       <script src="quangcao.js"></script>
+     
+     
+
+      <div class="product-section">
+        <section class="content-area">
+      
+    <div class="slideshow-container">
+     </div>
+
+    <div class="product-card-container">
+      <div class="main-product-header">
+        <h2>iPhone Chính Hãng (Apple Authorized Reseller)</h2>
+        <div class="product-tabs">
+          <button class="tab active">Mới nhất</button>
+          <button class="tab">iPhone 17 Series</button> 
+          <button class="tab">iPhone Air</button>
+          <button class="tab">iPhone 16 Series</button>
+          <button class="tab">iPhone 15 Series</button>
+          <button class="tab view-all">Xem tất cả</button>
+        </div>
+      </div>
+
+      <div class="product-section special-section">
+        <div class="product-grid" id="product-iphone-special"></div>
+      </div>
+    </div>
+  
+    <div class="product-card-container">
+      <div class="main-product-header">
+        <h2>Laptop Chính Hãng (Apple MacBook)</h2>
+        <div class="product-tabs">
+          <button class="tab active">Mới nhất</button>
+          <button class="tab">MacBook Pro</button>
+          <button class="tab">MacBook Air M4</button>
+          <button class="tab">MacBook Air M2</button>
+          <button class="tab">Mac mini M4</button>
+          <button class="tab view-all">Xem tất cả</button>
+        </div>
+      </div>
+
+      <div class="product-section special-section">
+        <div class="product-grid" id="product-new"></div>
+      </div>
+    </div>
+
+    <div class="product-card-container">
+      <div class="main-product-header">
+        <h2>Watch Chính Hãng (Apple Watch)</h2>
+        <div class="product-tabs">
+          <button class="tab active">Mới nhất</button>
+          <button class="tab">Apple Watch Series 11</button>
+          <button class="tab">Apple Watch Series 10</button>
+          <button class="tab">Apple Watch SE</button>
+          <button class="tab">Apple Watch Ultra</button>
+          <button class="tab view-all">Xem tất cả</button>
+        </div>
+      </div>
+
+      <div class="product-section special-section">
+        <div class="product-grid" id="product-robot"></div>
+      </div>
+    </div>
+    </section>
+  </div>
+
+      
+
+      
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-links">
+      <a href="#">Chính sách bảo hành</a>
+      <a href="#">Vận chuyển & Giao hàng</a>
+      <a href="#">Liên hệ hỗ trợ</a>
+      <a href="#">Chính sách đổi trả</a>
+    </div>
+    <p>© 2025 HShop Clone — Demo bởi Minh 🔧</p>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>

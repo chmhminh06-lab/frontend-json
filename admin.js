@@ -1,0 +1,176 @@
+const STORAGE_KEY = 'products_custom';
+
+const qs = (sel) => document.querySelector(sel);
+const qsa = (sel) => Array.from(document.querySelectorAll(sel));
+
+function loadCustomProducts() {
+    try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        return raw ? JSON.parse(raw) : null;
+    } catch (_) {
+        return null;
+    }
+}
+
+function saveCustomProducts(products) {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(products));
+}
+
+async function loadDefaultProducts() {
+    const res = await fetch('db.json');
+    const data = await res.json();
+    return data.products || [];
+}
+
+function nextId(products) {
+    const maxId = products.reduce((m, p) => Math.max(m, Number(p.id) || 0), 0);
+    return maxId + 1;
+}
+
+function renderTable(products) {
+    const tbody = qs('#product-table-body');
+    tbody.innerHTML = products.map(p => `
+        <tr>
+            <td style="padding:8px;border-bottom:1px solid #eee;">${p.id}</td>
+            <td style="padding:8px;border-bottom:1px solid #eee;">${p.name}</td>
+            <td style="padding:8px;border-bottom:1px solid #eee;">${Number(p.price).toLocaleString('vi-VN')} đ</td>
+            <td style="padding:8px;border-bottom:1px solid #eee;">${p.image}</td>
+            <td style="padding:8px;border-bottom:1px solid #eee;">${p.category}</td>
+            <td style="padding:8px;border-bottom:1px solid #eee;">${p.hot ? '✅' : '❌'}</td>
+            <td style="padding:8px;border-bottom:1px solid #eee;display:flex;gap:6px;">
+                <button data-action="edit" data-id="${p.id}">Sửa</button>
+                <button data-action="delete" data-id="${p.id}">Xóa</button>
+            </td>
+        </tr>
+    `).join('');
+}
+
+function readForm() {
+    return {
+        id: qs('#product-id').value ? Number(qs('#product-id').value) : undefined,
+        name: qs('#product-name').value.trim(),
+        price: Number(qs('#product-price').value || 0),
+        image: qs('#product-image').value.trim(),
+        category: qs('#product-category').value,
+        hot: qs('#product-hot').checked,
+        description: qs('#product-description').value.trim()
+    };
+}
+
+function fillForm(p) {
+    qs('#product-id').value = p?.id ?? '';
+    qs('#product-name').value = p?.name ?? '';
+    qs('#product-price').value = p?.price ?? '';
+    qs('#product-image').value = p?.image ?? '';
+    const nameSpan = qs('#product-image-name');
+    if (nameSpan) nameSpan.textContent = p?.image ? 'Đã có ảnh' : 'Chưa chọn ảnh';
+    const preview = qs('#product-image-preview');
+    if (preview) {
+        if (p?.image) {
+            preview.src = p.image;
+            preview.style.display = 'block';
+        } else {
+            preview.removeAttribute('src');
+            preview.style.display = 'none';
+        }
+    }
+    qs('#product-category').value = p?.category ?? 'điện thoại';
+    qs('#product-hot').checked = !!p?.hot;
+    qs('#product-description').value = p?.description ?? '';
+}
+
+function resetForm() {
+    fillForm({});
+}
+
+async function bootstrap() {
+    let products = loadCustomProducts();
+    if (!products) {
+        products = await loadDefaultProducts();
+    }
+    renderTable(products);
+
+    // File input handlers
+    const fileInput = qs('#product-image-file');
+    const hiddenInput = qs('#product-image');
+    const nameSpan = qs('#product-image-name');
+    const preview = qs('#product-image-preview');
+    if (fileInput) {
+        fileInput.addEventListener('change', async (e) => {
+            const file = e.target.files && e.target.files[0];
+            if (!file) return;
+            nameSpan.textContent = file.name;
+            const reader = new FileReader();
+            reader.onload = () => {
+                hiddenInput.value = reader.result;
+                preview.src = reader.result;
+                preview.style.display = 'block';
+            };
+            reader.readAsDataURL(file);
+        });
+    }
+
+    qs('#product-form').addEventListener('submit', (e) => {
+        e.preventDefault();
+        const formData = readForm();
+
+        if (!formData.name || !formData.category) return;
+        // image can be URL or data URL; optional fallback to placeholder
+        if (!formData.image) {
+            formData.image = 'img/a.png';
+        }
+        if (formData.price < 0) return;
+
+        const existingIndex = products.findIndex(p => p.id === formData.id);
+        if (existingIndex >= 0) {
+            products[existingIndex] = { ...products[existingIndex], ...formData };
+        } else {
+            const id = nextId(products);
+            products.push({ ...formData, id });
+        }
+        saveCustomProducts(products);
+        renderTable(products);
+        resetForm();
+    });
+
+    qs('#reset-btn').addEventListener('click', () => {
+        resetForm();
+    });
+
+    qs('#seed-btn').addEventListener('click', async () => {
+        const def = await loadDefaultProducts();
+        products = def;
+        saveCustomProducts(products);
+        renderTable(products);
+        resetForm();
+    });
+
+    qs('#clear-btn').addEventListener('click', () => {
+        localStorage.removeItem(STORAGE_KEY);
+        // Reload to reflect original db.json on homepage
+        window.location.reload();
+    });
+
+    qs('#product-table-body').addEventListener('click', (e) => {
+        const btn = e.target.closest('button');
+        if (!btn) return;
+        const id = Number(btn.dataset.id);
+        const action = btn.dataset.action;
+        const idx = products.findIndex(p => p.id === id);
+        if (idx < 0) return;
+
+        if (action === 'edit') {
+            fillForm(products[idx]);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        if (action === 'delete') {
+            products.splice(idx, 1);
+            saveCustomProducts(products);
+            renderTable(products);
+        }
+    });
+}
+
+document.addEventListener('DOMContentLoaded', bootstrap);
+
+

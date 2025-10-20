@@ -1,0 +1,375 @@
+/* -------------------------------------------------------------------------
+   1. RESET & FONT
+------------------------------------------------------------------------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Roboto, sans-serif;
+}
+
+body {
+  background: #fff;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* -------------------------------------------------------------------------
+   2. HEADER
+------------------------------------------------------------------------- */
+.site-header {
+  background: #fff;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  padding: 10px 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.header-top {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 0 20px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo img {
+  height: 50px;
+  width: auto;
+}
+
+.brand-text h1 {
+  font-size: 22px;
+  color: #ff6600;
+  font-weight: 700;
+}
+
+.brand-text p {
+  font-size: 12px;
+  color: #666;
+}
+
+/* Category bar */
+.category-bar {
+  display: flex;
+  align-items: center;
+  color: #333;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.category-bar:hover {
+  color: #ff6600;
+}
+
+/* Search bar */
+.search-bar {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  max-width: 400px;
+  background: #f5f5f5;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.search-bar input {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  background: none;
+  outline: none;
+}
+
+.search-bar button {
+  background: #ff6600;
+  color: #fff;
+  border: none;
+  padding: 10px 14px;
+  cursor: pointer;
+}
+
+.search-bar button:hover {
+  background: #e65700;
+}
+
+/* -------------------------------------------------------------------------
+   3. PRODUCT DETAIL
+------------------------------------------------------------------------- */
+.container {
+  max-width: 1200px;
+  margin: 30px auto;
+  padding: 0 20px;
+}
+
+.breadcrumb {
+  font-size: 14px;
+  color: #777;
+  margin-bottom: 15px;
+}
+
+.breadcrumb a {
+  color: #ff6600;
+  text-decoration: none;
+}
+
+.breadcrumb a:hover {
+  text-decoration: underline;
+}
+
+.product-content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+/* Gallery */
+.product-gallery {
+  flex: 1 1 45%;
+}
+
+.main-img-box {
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.main-img-box img {
+  width: 100%;
+  display: block;
+}
+
+.thumb-img-box {
+  margin-top: 10px;
+  display: flex;
+  gap: 10px;
+}
+
+.thumb-img-box img {
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 2px solid transparent;
+  cursor: pointer;
+}
+
+.thumb-img.active,
+.thumb-img:hover {
+  border-color: #ff6600;
+}
+
+/* Product details */
+.product-details {
+  flex: 1 1 50%;
+}
+
+.product-name {
+  font-size: 26px;
+  margin-bottom: 10px;
+}
+
+.product-rating {
+  color: #ff6600;
+  margin-bottom: 10px;
+}
+
+.product-price-box {
+  margin: 15px 0;
+  font-size: 22px;
+  font-weight: bold;
+  color: #ff6600;
+}
+
+.old-price {
+  text-decoration: line-through;
+  color: #888;
+  margin-left: 10px;
+}
+
+/* Color options */
+.product-color-options {
+  margin: 20px 0;
+}
+
+.color-option {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: 2px solid #ccc;
+  margin: 0 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.color-option.active,
+.color-option:hover {
+  border-color: #ff6600;
+}
+
+/* Action box */
+.product-action-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.quantity-control {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.quantity-control button {
+  background: #f5f5f5;
+  border: none;
+  padding: 8px 12px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.quantity-control input {
+  width: 40px;
+  text-align: center;
+  border: none;
+  outline: none;
+}
+
+.btn-add-cart,
+.btn-buy-now {
+  padding: 10px 18px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.btn-add-cart {
+  background: #fff;
+  border: 1px solid #ff6600;
+  color: #ff6600;
+}
+
+.btn-add-cart:hover {
+  background: #ff6600;
+  color: #fff;
+}
+
+.btn-buy-now {
+  background: #ff6600;
+  color: #fff;
+}
+
+.btn-buy-now:hover {
+  background: #e65700;
+}
+
+/* Ưu đãi */
+.product-uudai-box {
+  margin-top: 20px;
+  background: #fff7f0;
+  border-radius: 10px;
+  padding: 15px;
+}
+
+.product-uudai-box h2 {
+  color: #ff6600;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.product-uudai-box li {
+  list-style: none;
+  margin: 6px 0;
+  color: #555;
+}
+
+/* -------------------------------------------------------------------------
+   4. SPECIFICATION & DESCRIPTION
+------------------------------------------------------------------------- */
+.product-specs-description {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.specifications, .full-description {
+  flex: 1 1 45%;
+  background: #fafafa;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.specifications h2,
+.full-description h2 {
+  color: #ff6600;
+  margin-bottom: 10px;
+}
+
+.specifications table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.specifications td {
+  padding: 8px 6px;
+  border-bottom: 1px solid #ddd;
+}
+
+/* -------------------------------------------------------------------------
+   5. FOOTER
+------------------------------------------------------------------------- */
+.site-footer {
+  background: #fff;
+  border-top: 1px solid #eee;
+  padding: 20px 0;
+  text-align: center;
+  color: #666;
+  margin-top: 60px;
+}
+
+.footer-links {
+  margin-bottom: 10px;
+}
+
+.footer-links a {
+  margin: 0 10px;
+  color: #333;
+  text-decoration: none;
+}
+
+.footer-links a:hover {
+  color: #ff6600;
+}
+
+/* -------------------------------------------------------------------------
+   6. RESPONSIVE
+------------------------------------------------------------------------- */
+@media (max-width: 768px) {
+  .product-content {
+    flex-direction: column;
+  }
+
+  .header-top {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .search-bar {
+    max-width: 100%;
+  }
+}

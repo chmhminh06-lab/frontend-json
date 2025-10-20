@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chi tiết sản phẩm | Hoàng Minh</title>
+    <link rel="stylesheet" href="sp.css" /> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header class="site-header">
+        <div class="header-top">
+            <div class="logo">
+                <img src="img/a.png" alt="Logo Hoàng Minh">
+                <div class="brand-text">
+                    <h1>Hoàng Minh</h1>
+                    <p>-- iPhone - iPad - iWatch --</p>
+                </div>
+            </div>
+            <div class="category-bar">
+                <div class="category-btn">
+                    <i class="fas fa-bars icon"></i>📂 Danh mục
+                </div>
+            </div>
+            <div class="search-bar">
+                <input type="text" placeholder="Tìm kiếm sản phẩm...">
+                <button><i class="fas fa-search"></i></button>
+            </div>
+        </div>
+    </header>
+
+    <main class="container product-detail-page">
+        <div class="breadcrumb" id="product-breadcrumb">
+            <a href="index.html">Trang chủ</a> &gt; <a href="#">Danh mục</a> &gt; Tên sản phẩm
+        </div>
+
+        <div class="product-header">
+            <h1 id="product-name-title">Tên Sản Phẩm</h1> 
+        </div>
+
+        <div class="product-content">
+            <div class="product-gallery">
+                <div class="main-img-box">
+                    <img src="" alt="Ảnh sản phẩm" id="product-main-image"> 
+                </div>
+                
+                <div class="thumb-img-box">
+                    <img src="img/iphoneair.jpg" alt="thumbnail 1" class="thumb-img active">
+                    <img src="img/iphoneair.jpg" alt="thumbnail 2" class="thumb-img">
+                    <img src="img/iphoneair.jpg" alt="thumbnail 3" class="thumb-img">
+                </div>
+            </div>
+
+            <div class="product-details">
+                <h1 class="product-name" id="product-name-details">Tên Sản Phẩm</h1> 
+
+                <div class="product-rating">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i> (4.5) | Đã bán 123
+                </div>
+
+                <div class="product-price-box">
+                    <span class="current-price" id="product-price">Giá Sản Phẩm</span> 
+                    <span class="old-price"></span> 
+                    <span class="discount-percent"></span>
+                </div>
+                
+                <div class="product-color-options">
+                    <span>Màu sắc:</span>
+                    <button class="color-option active" style="background-color: #000;"></button>
+                    <button class="color-option" style="background-color: #fff;"></button>
+                    <button class="color-option" style="background-color: #f00;"></button>
+                </div>
+
+                <div class="product-action-box">
+                    <div class="quantity-control">
+                        <button>-</button>
+                        <input type="text" value="1">
+                        <button>+</button>
+                    </div>
+                    <button class="btn-add-cart"><i class="fas fa-shopping-cart"></i> Thêm vào giỏ</button>
+                    <button class="btn-buy-now">MUA NGAY</button>
+                </div>
+
+                <div class="product-uudai-box">
+                    <h2>Ưu đãi đặc biệt</h2>
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i> Giảm ngay 500.000đ khi thanh toán qua VNPAY.</li>
+                        <li><i class="fas fa-check-circle"></i> Trả góp 0% qua thẻ tín dụng.</li>
+                        <li><i class="fas fa-check-circle"></i> Tặng kèm ốp lưng và dán màn hình cao cấp.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="product-specs-description">
+            <div class="specifications">
+                <h2>THÔNG SỐ KỸ THUẬT</h2>
+                <table>
+                    <tbody>
+                        <tr><td>Màn hình</td><td>6.1 inch, Super Retina XDR</td></tr>
+                        <tr><td>CPU</td><td>Apple A15 Bionic</td></tr>
+                        <tr><td>Bộ nhớ trong</td><td>256GB</td></tr>
+                        <tr><td>Camera sau</td><td>Camera kép 12MP</td></tr>
+                        <tr><td>Pin</td><td>3279 mAh</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="full-description" id="product-full-description">
+                <h2>ĐẶC ĐIỂM NỔI BẬT</h2>
+                <p>Nội dung này sẽ được thay thế bởi mô tả chi tiết từ file db.json.</p>
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-links">
+            <a href="#">Chính sách bảo hành</a>
+            <a href="#">Chính sách đổi trả</a>
+            <a href="#">Hệ thống cửa hàng</a>
+            <a href="#">Liên hệ</a>
+        </div>
+        <p>&copy; 2025 Hoàng Minh - Cửa hàng điện thoại và phụ kiện.</p>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+</html>

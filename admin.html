@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin - Quản lý sản phẩm</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-top">
+      <div class="logo">
+        <img src="img/a.png" alt="Logo Hoàng Minh">
+        <div class="brand-text">
+          <h1>Hoàng Minh</h1>
+          <p>-- Trang quản trị --</p>
+        </div>
+      </div>
+      <nav class="main-nav">
+        <a href="index.html">⬅ Quay lại Trang chủ</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="content-area" style="max-width:1200px;margin:20px auto;">
+    <h2>Quản lý sản phẩm</h2>
+
+    <form id="product-form" style="background:#fff;padding:16px;border-radius:8px;margin-bottom:20px;border:1px solid #eee;">
+      <input type="hidden" id="product-id" />
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+        <div>
+          <label for="product-name">Tên sản phẩm</label>
+          <input id="product-name" type="text" placeholder="VD: iPhone 17 Pro Max" required />
+        </div>
+        <div>
+          <label for="product-price">Giá (đ)</label>
+          <input id="product-price" type="number" min="0" step="1000" required />
+        </div>
+        <div>
+          <label for="product-image-file">Ảnh sản phẩm</label>
+          <input id="product-image" type="text" placeholder="img/iphone17.jpg" style="display:none;" />
+          <input id="product-image-file" type="file" accept="image/*" class="file-input-hidden" />
+          <div style="display:flex;align-items:center;gap:10px;margin-top:6px;">
+            <label for="product-image-file" class="btn-file">Chọn ảnh</label>
+            <span id="product-image-name" class="file-name">Chưa chọn ảnh</span>
+          </div>
+          <img id="product-image-preview" alt="Xem trước ảnh" style="display:none;margin-top:8px;border:1px solid #eee;border-radius:6px;max-height:80px;object-fit:contain;background:#fafafa;" />
+        </div>
+        <div>
+          <label for="product-category">Danh mục</label>
+          <select id="product-category" required>
+            <option value="điện thoại">điện thoại</option>
+            <option value="laptop">laptop</option>
+            <option value="dh">dh</option>
+          </select>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;">
+          <input id="product-hot" type="checkbox" />
+          <label for="product-hot">Sản phẩm hot</label>
+        </div>
+        <div style="grid-column:1 / -1;">
+          <label for="product-description">Mô tả</label>
+          <textarea id="product-description" rows="3" placeholder="Mô tả ngắn..."></textarea>
+        </div>
+      </div>
+
+      <div style="margin-top:12px;display:flex;gap:8px;">
+        <button type="submit" id="save-btn">Lưu</button>
+        <button type="button" id="reset-btn">Làm mới</button>
+        <button type="button" id="seed-btn" title="Nạp dữ liệu mặc định từ db.json">Nạp mặc định</button>
+        <button type="button" id="clear-btn" title="Xóa toàn bộ dữ liệu tuỳ chỉnh">Xóa tuỳ chỉnh</button>
+      </div>
+    </form>
+
+    <div style="overflow:auto;background:#fff;border:1px solid #eee;border-radius:8px;">
+      <table style="width:100%;border-collapse:collapse;">
+        <thead>
+          <tr style="background:#f7f7f7;">
+            <th style="padding:10px;border-bottom:1px solid #eee;">ID</th>
+            <th style="padding:10px;border-bottom:1px solid #eee;">Tên</th>
+            <th style="padding:10px;border-bottom:1px solid #eee;">Giá</th>
+            <th style="padding:10px;border-bottom:1px solid #eee;">Ảnh</th>
+            <th style="padding:10px;border-bottom:1px solid #eee;">Danh mục</th>
+            <th style="padding:10px;border-bottom:1px solid #eee;">Hot</th>
+            <th style="padding:10px;border-bottom:1px solid #eee;">Thao tác</th>
+          </tr>
+        </thead>
+        <tbody id="product-table-body"></tbody>
+      </table>
+    </div>
+  </main>
+
+  <script src="admin.js"></script>
+</body>
+</html>
+
+
