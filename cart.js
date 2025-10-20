@@ -44,6 +44,23 @@ async function renderCart(){
   const idToProduct = new Map(products.map(p=>[p.id, {...p, image: normalizeImagePath(p.image)}]));
 
   let total = 0;
+  
+  if (cart.length === 0) {
+    tbody.innerHTML = `
+      <tr>
+        <td colspan="5" style="text-align:center;padding:40px;color:#666;">
+          <div style="font-size:18px;margin-bottom:10px;">🛒</div>
+          <div style="font-size:16px;font-weight:600;margin-bottom:5px;">Giỏ hàng của bạn đang trống</div>
+          <div style="font-size:14px;">Hãy thêm sản phẩm để tiếp tục mua sắm!</div>
+          <a href="index.html" style="display:inline-block;margin-top:15px;padding:10px 20px;background:#ff6600;color:white;text-decoration:none;border-radius:6px;font-weight:600;">Tiếp tục mua sắm</a>
+        </td>
+      </tr>
+    `;
+    totalEl.textContent = formatVND(0);
+    renderCartCount();
+    return;
+  }
+  
   tbody.innerHTML = cart.map(item => {
     const snap = item;
     const apiP = idToProduct.get(item.productId);
@@ -51,7 +68,9 @@ async function renderCart(){
       id: item.productId,
       name: snap.name || apiP?.name || `Sản phẩm ${item.productId}`,
       price: snap.price ?? apiP?.price ?? 0,
-      image: normalizeImagePath(snap.image || apiP?.image || '/img/a.png')
+      image: normalizeImagePath(snap.image || apiP?.image || '/img/a.png'),
+      brand: snap.brand || apiP?.brand || 'Apple',
+      category: snap.category || apiP?.category || 'Sản phẩm'
     };
     if(!p) return '';
     const line = p.price * (item.quantity||0);
@@ -59,11 +78,13 @@ async function renderCart(){
     return `
       <tr data-id="${p.id}">
         <td>
-          <div style="display:flex;align-items:center;gap:10px;">
-            <img src="${p.image}" alt="${p.name}" style="width:60px;height:60px;object-fit:contain;background:#fafafa;border:1px solid #eee;border-radius:6px;" />
+          <div style="display:flex;align-items:center;gap:15px;">
+            <img src="${p.image}" alt="${p.name}" style="width:80px;height:80px;object-fit:cover;background:#fafafa;border:2px solid #e9ecef;border-radius:8px;box-shadow:0 2px 4px rgba(0,0,0,0.1);" />
             <div>
-              <div style="font-weight:600;">${p.name}</div>
-              <div style="font-size:12px;color:#888;">ID: ${p.id}</div>
+              <div style="font-weight:600;font-size:16px;color:#333;margin-bottom:4px;">${p.name}</div>
+              <div style="font-size:12px;color:#666;margin-bottom:2px;">Thương hiệu: ${p.brand}</div>
+              <div style="font-size:12px;color:#888;">Danh mục: ${p.category}</div>
+              <div style="font-size:12px;color:#999;">ID: ${p.id}</div>
             </div>
           </div>
         </td>
@@ -76,7 +97,7 @@ async function renderCart(){
           </div>
         </td>
         <td class="line-total">${formatVND(line)}</td>
-        <td class="actions"><button class="remove" type="button">Xoá</button></td>
+        <td class="actions"><button class="remove" type="button">Xóa</button></td>
       </tr>
     `;
   }).join('');
