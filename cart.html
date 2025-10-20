@@ -3,8 +3,29 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Giỏ hàng</title>
+  <title>Giỏ hàng - Hoàng Minh</title>
   <link rel="stylesheet" href="style.css" />
+  <style>
+    body { background-color: #f8f9fa !important; color: #333 !important; }
+    .content-area { background-color: #f8f9fa !important; padding: 20px; color: #333 !important; }
+    h2 { color: #333 !important; margin: 20px 0; font-size: 28px; font-weight: 700; }
+    .cart-wrapper { background: #fff !important; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); overflow: hidden; }
+    .cart-table { width: 100%; border-collapse: collapse; }
+    .cart-table th { background: #f8f9fa !important; color: #495057 !important; padding: 16px; font-weight: 600; text-align: left; border-bottom: 2px solid #dee2e6; }
+    .cart-table td { padding: 16px; border-bottom: 1px solid #e9ecef; color: #333 !important; }
+    .cart-table tr:hover { background: #f8f9fa !important; }
+    .cart-summary { background: #f8f9fa !important; padding: 20px; display: flex; justify-content: space-between; align-items: center; }
+    .cart-total { font-size: 20px; font-weight: 700; color: #e30000 !important; }
+    .cart-actions { display: flex; gap: 12px; }
+    .btn-add-cart { background: #6c757d !important; color: white !important; border: none; padding: 12px 20px; border-radius: 6px; cursor: pointer; font-weight: 600; }
+    .btn-buy { background: #ff6600 !important; color: white !important; border: none; padding: 12px 20px; border-radius: 6px; cursor: pointer; font-weight: 600; }
+    .qty { display: flex; align-items: center; border: 1px solid #ddd; border-radius: 6px; overflow: hidden; }
+    .qty button { width: 36px; height: 36px; border: none; background: #f8f9fa; cursor: pointer; font-weight: 700; color: #333 !important; }
+    .qty input { width: 60px; height: 36px; border: none; text-align: center; outline: none; color: #333 !important; }
+    .remove { background: #dc3545 !important; color: white !important; border: none; padding: 8px 12px; border-radius: 4px; cursor: pointer; font-size: 12px; }
+    .price { font-weight: 700; color: #e30000 !important; }
+    .line-total { font-weight: 700; color: #e30000 !important; }
+  </style>
 </head>
 <body>
   <header class="site-header">
