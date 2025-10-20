@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Giỏ hàng</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-top">
+      <div class="logo">
+        <img src="img/a.png" alt="Logo Hoàng Minh">
+        <div class="brand-text">
+          <h1>Hoàng Minh</h1>
+          <p>-- Giỏ hàng --</p>
+        </div>
+      </div>
+      <div class="category-bar">
+        <div class="category-btn" onclick="location.href='index.html'">⬅ Về trang chủ</div>
+      </div>
+      <div class="search-bar">
+        <input type="text" placeholder="Tìm kiếm sản phẩm..." disabled>
+        <button disabled>Tìm kiếm</button>
+        <div class="header-icons">
+          <a href="index.html">Trang chủ</a>
+          <a href="admin.html">Admin</a>
+        </div>
+      </div>
+      <div class="header-icons"></div>
+    </div>
+  </header>
+
+  <main class="content-area" style="max-width:1200px;margin:20px auto;padding:0 12px;">
+    <h2 style="margin:10px 0 16px;">Giỏ hàng của bạn</h2>
+
+    <div class="cart-wrapper">
+      <table class="cart-table" id="cart-table">
+        <thead>
+          <tr>
+            <th>Sản phẩm</th>
+            <th>Đơn giá</th>
+            <th>Số lượng</th>
+            <th>Thành tiền</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody id="cart-tbody"></tbody>
+      </table>
+
+      <div class="cart-summary">
+        <div class="cart-total">Tổng cộng: <strong id="cart-total">0 đ</strong></div>
+        <div class="cart-actions">
+          <button id="clear-cart" class="btn-add-cart" type="button">Xoá toàn bộ</button>
+          <button id="checkout" class="btn-buy" type="button">Thanh toán</button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="cart.js"></script>
+</body>
+</html>
+
+
+
